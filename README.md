@@ -20,7 +20,7 @@ Clone the project
 
 
 ```bash
-  git clone https://github.com/Natanael-de-Paulo/MultForm.github.io.git](https://github.com/natanael-de-paulo/natanael-de-paulo-frontend.git
+  git clone https://github.com/natanael-de-paulo/natanael-de-paulo-frontend.git
 ```
 
 Enter the project directory
