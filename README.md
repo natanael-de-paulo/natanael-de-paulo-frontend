@@ -13,3 +13,30 @@ This project was developed with the objective of creating the interface of the s
 - react-icons
 - clsx
 - react-dropzone
+
+# Running locally
+
+Clone the project
+
+
+```bash
+  git clone https://github.com/Natanael-de-Paulo/MultForm.github.io.git](https://github.com/natanael-de-paulo/natanael-de-paulo-frontend.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd natanael-de-paulo-frontend
+```
+
+Instale as dependências
+
+```bash
+  npm install
+```
+
+Inicie o servidor
+
+```bash
+  npm run start
+```
