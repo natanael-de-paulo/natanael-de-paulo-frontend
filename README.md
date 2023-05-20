@@ -23,19 +23,20 @@ Clone the project
   git clone https://github.com/Natanael-de-Paulo/MultForm.github.io.git](https://github.com/natanael-de-paulo/natanael-de-paulo-frontend.git
 ```
 
-Entre no diretório do projeto
+Enter the project directory
 
 ```bash
   cd natanael-de-paulo-frontend
 ```
 
-Instale as dependências
+Install the dependencies
+
 
 ```bash
   npm install
 ```
 
-Inicie o servidor
+Start the server
 
 ```bash
   npm run start
