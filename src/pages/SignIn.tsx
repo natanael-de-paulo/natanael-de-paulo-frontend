@@ -2,8 +2,16 @@ import { AuthForm } from '../components/AuthForm'
 import { Btn } from '../components/Btn'
 import { WrapperInput } from '../components/WrapperInput'
 import { MdOutlineEmail, MdOutlineLock } from 'react-icons/md'
+import { useContextAuth } from '../contexts/useAuth'
+import { Navigate } from 'react-router-dom'
 
 export function SignIn() {
+  const { singIn, isAuthenticated } = useContextAuth()
+
+  if (isAuthenticated) {
+    return <Navigate to="/home" replace />
+  }
+
   return (
     <main className="mx-auto w-full max-w-screen-xl sm:flex sm:justify-center sm:items-center dark:bg-black">
       <AuthForm
@@ -12,12 +20,14 @@ export function SignIn() {
         className="flex flex-col gap-4"
         linkDescription={['Não possui conta?', 'Crie uma agora']}
         routeName="/signup"
+        typeSubmit="login"
+        submitFormButtonAction={singIn}
       >
         <div className="flex flex-col">
           <WrapperInput
             icon={MdOutlineEmail}
             htmlFor="email"
-            typeInput="email"
+            typeInput="text"
             id="email"
             placeholder="Digite seu email"
           />

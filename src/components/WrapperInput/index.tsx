@@ -27,6 +27,8 @@ export function WrapperInput(props: PropsWithChildren<InputProps>) {
           <div className="h-full w-[1px] bg-white text-white"></div>
         )}
 
+        {props.children}
+
         <input
           type={props.typeInput}
           className="flex bg-transparent outline-none w-full h-8 placeholder:text-white text-white"

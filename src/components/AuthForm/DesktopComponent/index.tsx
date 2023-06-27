@@ -3,8 +3,8 @@ import {
   MdOutlineLock,
   MdOutlinePersonOutline
 } from 'react-icons/md'
-import { WrapperInput } from '../../../WrapperInput'
-import { Btn } from '../../../Btn'
+import { WrapperInput } from '../../WrapperInput'
+import { Btn } from '../../Btn'
 
 export function DesktopComponent() {
   return (
