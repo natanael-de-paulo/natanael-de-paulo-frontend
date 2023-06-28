@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { MdOutlinePersonOutline } from 'react-icons/md'
@@ -6,12 +5,10 @@ import { PostProps } from '../../models/Post'
 import { Post } from '../Post'
 import { CreatePostDialog } from '../CreatePostDialog'
 import { CreatePostBtn } from '../CreatePostBtn'
-import { api } from '../../services/api'
-import { AuthHeader } from '../../services/AuthHeader'
+import { feed } from '../../services/feed/feed'
 
 export function Feed() {
   const [posts, setPosts] = useState<PostProps[]>([])
-  const token = localStorage.getItem('token')
   const user = 'Handle'
 
   useEffect(() => {
@@ -20,8 +17,8 @@ export function Feed() {
   }, [])
 
   const refreshListPost = async () => {
-    const listPost = await api.get('/feed', AuthHeader())
-    setPosts(listPost.data)
+    const listPost: PostProps[] = await feed()
+    setPosts(listPost)
   }
 
   const [open, setOpen] = useState(false)
@@ -30,7 +27,7 @@ export function Feed() {
   }
 
   return (
-    <>
+    <div>
       <div className="flex w-full px-4 sm:px-0 mt-6">
         <div className="flex w-full items-center bg-white rounded-md border border-slate-200 gap-4 p-2 pl-4 sm:justify-center">
           <div className="flex items-center my-2">
@@ -51,9 +48,8 @@ export function Feed() {
 
       {posts &&
         posts.map(post => (
-          <Post post={post} key={post._id} refreshListPost={refreshListPost} />
-
+          <Post post={post} key={post.id} refreshListPost={refreshListPost} />
         ))}
-    </>
+    </div>
   )
 }

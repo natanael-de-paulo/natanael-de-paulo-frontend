@@ -17,7 +17,6 @@ export function SignUp() {
 
   const navigate = useNavigate()
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     function handleResize() {
       setIsSmallScreen(window.innerWidth < 768)
@@ -35,10 +34,12 @@ export function SignUp() {
 
   const handleRegisterUser = async (data: SignUpUserProps) => {
     try {
-      await api.post('/security/register', {
-        user: data.email,
+      await api.post('/users', {
+        email: data.email,
         password: data.password,
-        name: data.profile.firstName + ' ' + data.profile.lastName
+        profile: {
+          name: data.profile.firstName + ' ' + data.profile.lastName
+        }
       })
       navigate('/')
     } catch (error) {

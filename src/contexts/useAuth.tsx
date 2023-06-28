@@ -10,7 +10,6 @@ import {
 } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../services/api'
-// import { AuthHeader } from '../services/AuthHeader'
 import { LoginUserProps } from '../services/types'
 
 interface AuthContextData {
@@ -25,15 +24,13 @@ type AuthProviderProps = {
 }
 
 type Token = {
-  _id: string
-  user: string
-  profile: string
+  sub: string
+  userId: string
 }
 
 type DecodeTokenProps = {
-  user_id: string
-  user_email: string
-  profile_id: string
+  userId: string
+  userEmail: string
   token: string
 }
 
@@ -56,22 +53,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const singIn = async ({ email, password }: LoginUserProps) => {
     try {
-      const { data } = await api.post('/security/login', {
-        user: email,
+      const { data } = await api.post('/auth', {
+        email,
         password
       })
 
-      const decodedToken = jwtDecode(data.accessToken) as Token
+      const decodedToken = jwtDecode(data.token) as Token
 
       const userData = {
-        user_id: decodedToken._id,
-        user_email: decodedToken.user,
-        profile_id: decodedToken.profile,
-        token: data.accessToken
+        userId: decodedToken.userId,
+        userEmail: decodedToken.sub,
+        token: data.token
       } as DecodeTokenProps
 
-      localStorage.setItem('profile_id', userData.profile_id)
-      localStorage.setItem('user_id', userData.user_id)
+      localStorage.setItem('user_id', userData.userId)
       localStorage.setItem('token', userData.token)
 
       setIsAuthenticated(true)

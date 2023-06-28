@@ -1,11 +1,11 @@
 export interface PostProps{
-  _id: string;
+  id: string;
   title: string;
   description: string;
-  profile: ProfileProps;
   image: boolean;
-  imagePath: string;
+  imageUrl: string;
   comments: [string];
+  user_id: string;
   likes: [string];
   createdAt: string;
   updatedAt: string;
@@ -13,9 +13,7 @@ export interface PostProps{
 
 
 export type ProfileProps = {
-  _id: string;
   name: string;
-  user: string;
   following: [string];
   followers: [string];
   image: boolean;

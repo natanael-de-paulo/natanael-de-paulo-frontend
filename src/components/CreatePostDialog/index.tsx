@@ -6,7 +6,7 @@ import { Text } from '../Text'
 import { api } from '../../services/api'
 // import { Input } from '../AuthForm/Input'
 import { AiOutlineUser } from 'react-icons/ai'
-import { AuthHeader } from '../../services/AuthHeader'
+import { ConfigRequest } from '../../services/AuthHeader'
 import { WrapperInput } from '../WrapperInput'
 import { DropZone } from '../DropZone'
 import { Btn } from '../Btn'
@@ -36,7 +36,7 @@ export function CreatePostDialog({
   refreshListPost
 }: CreatePostDialogProps) {
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined)
-  const authHeader = AuthHeader()
+  const authHeader = ConfigRequest()
 
   const handleSubmit = async (event: FormEvent<FormElement>) => {
     event.preventDefault()
@@ -51,7 +51,6 @@ export function CreatePostDialog({
     }
 
     try {
-      console.log('retete', data)
       await api.post('/posts', data, authHeader)
       closeDialog()
       refreshListPost()
